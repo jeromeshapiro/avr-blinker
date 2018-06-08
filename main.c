@@ -28,8 +28,8 @@ void set_port(volatile uint8_t* port_set, const uint8_t pin_num, const uint8_t s
 
 int main()
 {
-	DDRB &= BIT_0; // set DDRB pin 0 as input
-	DDRD |= BIT_0 | BIT_1 | BIT_2; // set DDRD pint 0, 1, 2 as output
+	DDRB &= BIT_0; // set DDRB bit 0 as an input
+	DDRD |= BIT_0 | BIT_1 | BIT_2; // set DDRD bit 0, 1 & 2 as outputs
 
 	uint8_t switch_1 = 0; // set initial state of switch
 
