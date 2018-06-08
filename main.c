@@ -22,9 +22,9 @@ enum bits {
 	BIT_7 = (1 << 7)
 };
 
-uint8_t switch_state(volatile uint8_t* pin_set, const uint8_t pin_num);
-uint8_t toggle_state(volatile uint8_t* pin_set, const uint8_t pin_num, const uint8_t prev_state);
-void set_port(volatile uint8_t* port_set, const uint8_t pin_num, const uint8_t state);
+uint8_t switch_state(volatile uint8_t* pin_set, const uint8_t bit_num);
+uint8_t toggle_state(volatile uint8_t* pin_set, const uint8_t bit_num, const uint8_t prev_state);
+void set_port(volatile uint8_t* port_set, const uint8_t bit_num, const uint8_t state);
 
 int main()
 {
@@ -45,12 +45,12 @@ int main()
 	return 0;
 }
 
-uint8_t switch_state(volatile uint8_t* pin_set, const uint8_t pin_num)
+uint8_t switch_state(volatile uint8_t* pin_set, const uint8_t bit_num)
 {
-	if (*pin_set & pin_num)
+	if (*pin_set & bit_num)
 	{
 		_delay_ms(50);
-		if (*pin_set & pin_num)
+		if (*pin_set & bit_num)
 		{
 			return 1;
 		}
@@ -58,12 +58,12 @@ uint8_t switch_state(volatile uint8_t* pin_set, const uint8_t pin_num)
 	return 0;
 }
 
-uint8_t toggle_state(volatile uint8_t* pin_set, const uint8_t pin_num, const uint8_t prev_state)
+uint8_t toggle_state(volatile uint8_t* pin_set, const uint8_t bit_num, const uint8_t prev_state)
 {
-	if (*pin_set & pin_num)
+	if (*pin_set & bit_num)
 	{
 		_delay_ms(50);
-		if (*pin_set & pin_num)
+		if (*pin_set & bit_num)
 		{
 			_delay_ms(50);
 			return (prev_state == 0) ? 1 : 0;
@@ -72,15 +72,15 @@ uint8_t toggle_state(volatile uint8_t* pin_set, const uint8_t pin_num, const uin
 	return prev_state;
 }
 
-void set_port(volatile uint8_t* port_set, const uint8_t pin_num, const uint8_t state)
+void set_port(volatile uint8_t* port_set, const uint8_t bit_num, const uint8_t state)
 {
 	if (state)
 	{
-		*port_set |= pin_num;
+		*port_set |= bit_num;
 	}
 	else
 	{
-		*port_set &= ~pin_num;
+		*port_set &= ~bit_num;
 	}
 }
 
