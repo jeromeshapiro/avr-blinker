@@ -5,8 +5,8 @@ CC          = avr-gcc
 CPPFLAGS    = -mmcu=$(MCU)
 CFLAGS      = -Os -g -Wall -I. -DF_CPU=16000000
 LDFLAGS     = -g -mmcu=$(MCU) -lm -Wl,--gc-sections -Os
-PGMER       = -c arduino -b 115200 -P /dev/tty.usbmodem1411
-PGMERISP    = -c avrispv2 -P /dev/tty.usbmodem1411
+PGMER       = -c arduino -b 115200 -P /dev/tty.usbmodem1421
+PGMERISP    = -c avrispv2 -P /dev/tty.usbmodem1421
 DUDE        = /usr/local/bin/avrdude -V -p $(MCU)
 
 C_SRCS      = $(wildcard *.c)
