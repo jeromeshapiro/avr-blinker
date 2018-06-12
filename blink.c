@@ -30,18 +30,19 @@ void blink_1(uint8_t is_on, volatile uint8_t* pin_set)
 
 		if (++time >= 20000)
 		{
-			if (cycle == 0)
+			switch (cycle)
 			{
-				cycle = 1;
+				case 0:
+					cycle = 1;
+					break;
+				case 1:
+					cycle = 2;
+					break;
+				case 2:
+					cycle = 0;
+					break;
 			}
-			else if (cycle == 1)
-			{
-				cycle = 2;
-			}
-			else if (cycle == 2)
-			{
-				cycle = 0;
-			}
+
 			time = 0;
 		}
 	}
