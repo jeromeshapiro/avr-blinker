@@ -15,7 +15,6 @@ int main()
 	DDRD |= BIT_0 | BIT_1 | BIT_2 | BIT_4;
 
 	uint8_t switch_1 = 0; // set initial state of switch
-	uint8_t is_on;
 
 	while(1)
 	{
