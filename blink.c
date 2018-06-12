@@ -28,7 +28,7 @@ void blink_1(uint8_t is_on, volatile uint8_t* pin_set)
 				break;
 		}
 
-		if (++time >= 20000)
+		if (++time >= 10000)
 		{
 			switch (cycle)
 			{
