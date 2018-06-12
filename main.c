@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <avr/io.h>
 #include "bits.h"
-#include "state.h"
+#include "blink.h"
 
 /**
  * Arduino registers
@@ -20,11 +20,7 @@ int main()
 	while(1)
 	{
 		switch_1 = toggle_state(&PIND, BIT_3, switch_1);
-		is_on = switch_1;
-
-		set_port(&PORTD, BIT_0, is_on);
-		set_port(&PORTD, BIT_1, is_on);
-		set_port(&PORTD, BIT_2, is_on);
+		blink_1(switch_1, &PORTD);
 	}
 
 	return 0;
